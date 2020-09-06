@@ -7,14 +7,11 @@
 #include <sstream>
 #include "IComparable.h"
 
-class IntegerComparator : virtual public IComparable<int*> {
-public:
-    void compare(int* obj1 , int* obj2) override{
-        if (*obj1 > *obj2)
-        {
-            int change_val = *obj1;
-            *obj1 = *obj2;
-            *obj2 = change_val;
-        }
+class IntegerComparator : virtual public IComparable<int> {
+private:
+    bool compare(int obj1 , int obj2) override{
+        if(obj1 > obj2)
+            return true;
+        return false;
     }
 };

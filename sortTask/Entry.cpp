@@ -7,7 +7,7 @@
 
 int main(){
     IntegerComparator* comparable = new IntegerComparator();
-    BubbleSort<int* , IntegerComparator >* sort = new BubbleSort<int* , IntegerComparator>();
+    BubbleSort<int , IntegerComparator >* sort = new BubbleSort<int , IntegerComparator>();
 
     int* data =  new int[7];
     data[0] = 1;

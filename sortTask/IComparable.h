@@ -8,7 +8,15 @@ template<typename T>
 class IComparable
 {
 public:
-    virtual void compare(T obj1 , T obj2){std::cout<<"NOT_OK"<<std::endl;};
+    void execute(T* obj1 , T* obj2){
+        if(compare(*obj1 , *obj2)){
+            T change_val = *obj1;
+            *obj1 = *obj2;
+            *obj2 = change_val;
+        }
+    }
+private:
+    virtual bool compare(T obj1 , T obj2){};
 };
 
 #endif //OOP_ICOMPARABLE_H

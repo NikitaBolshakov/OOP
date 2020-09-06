@@ -14,11 +14,11 @@ class BubbleSort : virtual public ISortable<T , U>  {
 public:
     using ISortable<T , U>::ISortable;
 
-     void handle(T data , int length , U comparator) override{
+     void handle(T* data , int length , U comparator) override{
         for(int i = 0 ; i < length ; i++)
             for(int j = 0 ; j < length - i - 1 ; j++)
             {
-                comparator.compare(&data[j] , &data[j+1]);
+                comparator.execute(&data[j] , &data[j+1]);
             }
 
     }
