@@ -5,7 +5,7 @@
 #define OOP_ISOLVEABLE_H
 
 template<typename T>
-class ISolveable
+class ISolvable
 {
 public:
     virtual T solve();

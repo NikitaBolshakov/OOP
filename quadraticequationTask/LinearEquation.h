@@ -12,7 +12,7 @@
 #include <sstream>
 #include <iostream>
 
-class LinearEquation : virtual public ISolveable<double> , virtual public IValidable {
+class LinearEquation : virtual public ISolvable<double> , virtual public IValidable {
     double a;
     double b;
 

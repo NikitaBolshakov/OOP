@@ -10,7 +10,7 @@
 #include <sstream>
 #include <iostream>
 
-class QuadraticEquation : virtual public ISolveable<double*> , virtual public IValidable {
+class QuadraticEquation : virtual public ISolvable<double*> , virtual public IValidable {
     double a;
     double b;
     double c;
