@@ -4,12 +4,13 @@
 
 #include "ISolveable.h"
 #include "IValidable.h"
+#include "LinearEquation.h"
 
 #include <math.h>
 #include <sstream>
 #include <iostream>
 
-class QuadraticEquation : virtual public ISolveable<double*> {
+class QuadraticEquation : virtual public ISolveable<double*> , virtual public IValidable {
     double a;
     double b;
     double c;
@@ -17,15 +18,18 @@ class QuadraticEquation : virtual public ISolveable<double*> {
     int solutionsCount = -1;
 public:
     QuadraticEquation(double a , double b , double c){
-
-        validate();
-
         this -> a = a;
         this -> b = b;
         this -> c = c;
+
+        validate();
     }
 
-    void validate() {
+    void validate() override {
+        if(a == 0 && b == 0 && c == 0)
+            throw "All coefficients cannot be zero.";
+        if(a == 0 && b == 0 && c != 0)
+            throw "Wrong expression";
     }
 
     void printStringInterpretation() override{
@@ -35,6 +39,13 @@ public:
     }
 
     double* solve() override{
+        if(a == 0)
+        {
+            LinearEquation* linear = new LinearEquation(b , c);
+            double* solution = calculateLinear(linear);
+            return solution;
+        }
+
         int d = getDiscriminant();
         double* solutions = getSolutions(d);
         return solutions;
@@ -47,6 +58,13 @@ public:
     }
 
 private:
+    double* calculateLinear(LinearEquation* linear){
+        solutionsCount = 1;
+        double solution = linear -> solve();
+        double *solPtr = new double [1];
+        solPtr[0] = solution;
+        return solPtr;
+    }
     int getDiscriminant(){
         double d = b*b - 4 * a * c;
         return d;
