@@ -6,6 +6,7 @@
 #define OOP_ISORTABLE_H
 
 #include "IComparable.h"
+#include <iostream>
 
 template<typename T , typename U>
 class ISortable

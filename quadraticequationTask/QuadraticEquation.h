@@ -28,8 +28,6 @@ public:
     void validate() override {
         if(a == 0 && b == 0 && c == 0)
             throw "All coefficients cannot be zero.";
-        if(a == 0 && b == 0 && c != 0)
-            throw "Wrong expression";
     }
 
     void printStringInterpretation() override{
@@ -86,10 +84,12 @@ private:
             case 1:
                 solutions[0] = -b / (2*a);
                 break;
-            case 2:
-                solutions[0] = (-b + sqrt(discriminant)) / (2*a);
-                solutions[1] = (-b - sqrt(discriminant)) / (2*a);
+            case 2: {
+                double s = sqrt(discriminant);
+                solutions[0] = (-b + s) / (2 * a);
+                solutions[1] = (-b - s) / (2 * a);
                 break;
+            }
             default:
                 break;
         }
