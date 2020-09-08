@@ -23,4 +23,7 @@ int main(){
     for(int i = 0 ; i < 7 ; i++){
         std::cout << *(data+i) << std::endl;
     }
+    delete[] data;
+    delete comparable;
+    delete sort;
 }
